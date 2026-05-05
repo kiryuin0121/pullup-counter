@@ -4,6 +4,8 @@ import { useCallback, useEffect, useRef } from "react";
 import Webcam from "react-webcam";
 import { usePoseLandmarker } from "@/hooks/usePoseLandmarker";
 import { drawPose } from "@/lib/drawPose";
+import { usePullUpStore } from "@/store/pullUpStore";
+import { analyzePullUp } from "@/lib/analyzePullUp";
 
 const VIDEO_CONSTRAINTS: MediaTrackConstraints = {
   width: { ideal: 1280 },
@@ -18,6 +20,7 @@ const PoseDetector = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationFrameIdRef = useRef<number | null>(null);
   const { poseLandmarkerRef, isReady } = usePoseLandmarker();
+  const update = usePullUpStore(state=>state.update);
 
   const detect = useCallback(() => {
     const scheduleNext = () => {
@@ -65,6 +68,7 @@ const PoseDetector = () => {
     if (result.landmarks.length > 0) {
       // 骨格、関節を描画
       drawPose(ctx, result.landmarks, canvas.width, canvas.height);
+      update(analyzePullUp(result.landmarks[0]));
     } else {
       // 人体が検出されなかった場合はcanvas全体をリフレッシュ
       ctx.clearRect(0, 0, canvas.width, canvas.height);

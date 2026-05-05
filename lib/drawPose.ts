@@ -4,7 +4,7 @@ import { PoseLandmarker } from "@mediapipe/tasks-vision";
 const DRAW_STYLE = {
   joint: {
     radius: 6,
-    fillColor: "#ff1493",    // ピンク
+    fillColor: "#6495ed",    // 青色
     strokeColor: "#003B00",  // 関節点の輪郭色
     lineWidth: 1.5,
   },
