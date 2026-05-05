@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-// import { Geist } from "next/font/google";
+import { M_PLUS_Rounded_1c } from "next/font/google";
 import "./globals.css";
+import localFont from "next/font/local";
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
+const digitalFont = localFont({
+  // publicディレクトリへの相対パス
+  src: "../public/fonts/digital-7.woff2",
+  variable: "--font-digital",
+});
+
+const mPlusRounded1c = M_PLUS_Rounded_1c({
+  variable:"--font-mPlus",
+  weight:"700"
+});
 
 export const metadata: Metadata = {
   title: "pullup-counter",
@@ -22,6 +29,8 @@ export default function RootLayout({
       lang="ja"
       className={`
  w-full h-full 
+ ${digitalFont.variable}
+ ${mPlusRounded1c.variable}
  `}
     >
       <body className="min-h-full min-w-full flex flex-col bg-neutral-50 text-neutral-950">
