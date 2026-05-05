@@ -1,2 +1,1 @@
-<video src="./public/懸垂.mp4" width="100%" controls></video>
-
+[![懸垂カウンター](https://img.youtube.com/vi/a9BpMkUHe3E/0.jpg)](https://www.youtube.com/watch?v=a9BpMkUHe3E)
