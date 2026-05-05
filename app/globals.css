@@ -1,1 +1,7 @@
 @import "tailwindcss";
+.font-digital {
+  font-family: var(--font-digital);
+}
+.font-mPlus {
+  font-family: var(--font-mPlus);
+}
